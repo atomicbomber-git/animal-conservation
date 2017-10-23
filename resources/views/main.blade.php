@@ -1,7 +1,7 @@
 @extends("shared.base")
 
 @section("body")
-    @include('shared.navbar', ["page" => "Beranda"])
+    @include('shared.navbar', ["page" => "Beranda", "page_category" => "home"])
 
     <div class="container-fluid">
         <div class="jumbotron jumbotron-fluid">

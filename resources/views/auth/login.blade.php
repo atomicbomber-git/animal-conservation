@@ -1,10 +1,12 @@
 @extends("shared.base")
 
+@section("title", "Masuk")
+
 @section("body")
 
     @include("shared.navbar-base", ["page" => "Masuk"])
 
-    <div class="container-fluid">
+    <div class="container-fluid container-small">
 
         <div class="card">
             <div class="card-header">

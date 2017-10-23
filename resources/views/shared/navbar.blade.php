@@ -2,7 +2,7 @@
 
 @section("content-collapsible")
 <ul class="navbar-nav mr-auto">
-  <li class="nav-item active">
+  <li class="nav-item {{ isset($page_category) && ($page_category === "home") ? "active" : "" }}">
     <a class="nav-link" href="{{ route('main') }}"> <i class="fa fa-home" aria-hidden="true"> </i> Beranda </a>
   </li>
 
@@ -12,7 +12,7 @@
 
   @if(Auth::check())
   <li class="nav-item">
-    <a class="nav-link" href="#"> <i class="fa fa-file-text" aria-hidden="true"> </i> Laporkan </a>
+    <a class="nav-link {{ isset($page_category) && $page_category === "report" ? "active" : "" }}" href="{{ route('report.create') }}"> <i class="fa fa-file-text" aria-hidden="true"> </i> Laporkan </a>
   </li>
   @endif
 
@@ -23,13 +23,13 @@
 
 <form class="form-inline my-2 my-lg-0" method="{{ Auth::check() ? "POST": "GET" }}" action="{{ Auth::check() ? route('logout') : route('login') }}">
   @if(Auth::check())
-    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+    <button class="btn btn-danger my-2 my-sm-0" type="submit">
       Keluar <i class="fa fa-sign-out" aria-hidden="true"> </i>
     </button>
 
     {{ csrf_field() }}
   @else
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">
       Masuk <i class="fa fa-sign-in" aria-hidden="true"> </i>
     </button>
   @endif
