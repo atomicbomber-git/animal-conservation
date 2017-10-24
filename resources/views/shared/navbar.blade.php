@@ -7,7 +7,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="#"> <i class="fa fa-book" aria-hidden="true"> </i> Perizinan </a>
+    <a class="nav-link {{ isset($page_category) && ($page_category === "permit") ? "active" : "" }}" href="{{ route('permit.create') }}"> <i class="fa fa-book" aria-hidden="true"> </i> Perizinan </a>
   </li>
 
   @if(Auth::check())

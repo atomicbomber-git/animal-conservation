@@ -1,5 +1,7 @@
 @extends("shared.base")
 
+@section("title", "Beranda")
+
 @section("body")
     @include('shared.navbar', ["page" => "Beranda", "page_category" => "home"])
 

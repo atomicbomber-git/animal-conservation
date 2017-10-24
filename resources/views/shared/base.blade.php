@@ -49,6 +49,6 @@
 
         @yield("extra-script")
 
-
+        
     </body>
 </html>

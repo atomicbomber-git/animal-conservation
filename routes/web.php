@@ -19,7 +19,25 @@ Route::middleware(["auth"])->group(function() {
     Route::prefix("report")->group(function() {
         Route::get("/create", "ReportController@create")->name("report.create");
         Route::post("/save", "ReportController@save")->name("report.save");
+
+        Route::middleware(["can:administrate"])->group(function() {
+            Route::get("/", "ReportController@index")->name("report.index");
+            Route::get("/image/{report}", "ReportController@image")->name("report.image");
+            Route::get("/detail/{report}", "ReportController@detail")->name("report.detail");
+        });
     });
+
+    Route::prefix("permit")->group(function() {
+        Route::get("/create", "PermitController@create")->name("permit.create");
+        Route::post("/save", "PermitController@save")->name("permit.save");
+
+        Route::middleware(["can:administrate"])->group(function() {
+            Route::get("/", "PermitController@index")->name("permit.index");
+            // Route::get("/image/{report}", "ReportController@image")->name("report.image");
+            // Route::get("/detail/{report}", "ReportController@detail")->name("report.detail");
+        });
+    });
+
 });
 
 Route::middleware(["auth", "can:administrate"])->prefix("administrator")->group(function() {
