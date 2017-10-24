@@ -7,7 +7,7 @@
     <hr>
 
     <table class="table table-striped table-sm">
-        <thead class="thead thead-light">
+        <thead class="thead thead-dark">
             <tr>
                 <th scope="col"> # </th>
                 <th scope="col"> Judul </th>

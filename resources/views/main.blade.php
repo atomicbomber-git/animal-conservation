@@ -5,6 +5,12 @@
 @section("body")
     @include('shared.navbar', ["page" => "Beranda", "page_category" => "home"])
 
+    @if (session("message-success"))
+    <div class="alert alert-success">
+        {{ session("message-success") }}
+    </div>
+    @endif
+    
     <div class="container-fluid">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
@@ -16,6 +22,51 @@
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Fitur-fitur yang terdapat pada <strong> CEMPAKA </strong> antara lain adalah: take this kiss upon a brow, and in parting from you now, thus much let me avow.
                 </p>
+
+                @if (Auth::check())
+                    @if ( ! auth()->user()->is_verified)
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4>
+                                    <i class="fa fa-info"> </i>
+                                    Peringatan
+                                </h4>
+                            </div>
+                            <div class="card-text">
+                                Akun Anda belum diverifikasi. Untuk dapat menggunakan seluruh fitur pada CEMPAKA, akun Anda harus
+                                diverifikasi terlebih dahulu oleh administrator CEMPAKA. Proses verifikasi umumnya selesai paling lambat
+                                tiga hari setelah akun didaftarkan.
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                @else
+                    <div class="card bg-warning text-dark">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4>
+                                    <i class="fa fa-warning"> </i>
+                                    Peringatan
+                                </h4>
+                            </div>
+                            <div class="card-text">
+                                Untuk dapat menggunakan seluruh fitur pada CEMPAKA, Anda harus mendaftarkan akun Anda
+                                terlebih dahulu dan masuk dengan menggunakan akun tersebut.
+                            </div>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a class="btn btn-sm btn-primary" href="{{ route('register') }}">
+                                Daftar
+                                <i class="fa fa-list-alt"></i>
+                            </a>
+                            <a class="btn btn-sm btn-success" href="{{ route('login') }}">
+                                Masuk
+                                <i class="fa fa-sign-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

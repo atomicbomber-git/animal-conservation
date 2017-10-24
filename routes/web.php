@@ -33,8 +33,12 @@ Route::middleware(["auth"])->group(function() {
 
         Route::middleware(["can:administrate"])->group(function() {
             Route::get("/", "PermitController@index")->name("permit.index");
-            // Route::get("/image/{report}", "ReportController@image")->name("report.image");
-            // Route::get("/detail/{report}", "ReportController@detail")->name("report.detail");
+            Route::get("/{permit}/proposal", "PermitController@proposal")->name("permit.proposal");
+            Route::get("/{permit}/mother", "PermitController@mother")->name("permit.mother");
+            Route::get("/{permit}/mother/certificate-image", "PermitController@motherCertificateImage")->name("permit.mother-cert-image");
+            Route::get("/{permit}/father", "PermitController@father")->name("permit.father");
+            Route::get("/{permit}/father/certificate-image", "PermitController@fatherCertificateImage")->name("permit.father-cert-image");
+            Route::get("/{permit}/reference", "PermitController@reference")->name("permit.reference");
         });
     });
 

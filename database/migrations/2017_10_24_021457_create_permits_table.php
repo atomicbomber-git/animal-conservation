@@ -23,19 +23,22 @@ class CreatePermitsTable extends Migration
             $table->string("father_certificate_code");
             $table->string("father_birthplace");
             $table->string("father_birthdate");
+            $table->string("father_generation");
             $table->string("father_certificate_image");
 
             $table->string("mother_name");
             $table->string("mother_certificate_code");
             $table->string("mother_birthplace");
             $table->string("mother_birthdate");
+            $table->string("mother_generation");
             $table->string("mother_certificate_image");
 
             $table->string("proposal_document");
             $table->string("reference_image");
-        });
+        
             $table->integer("user_id")->unsigned()->nullable();
             $table->foreign("user_id")->references("id")->on("users");
+        });
     }
 
     /**

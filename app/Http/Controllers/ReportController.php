@@ -35,7 +35,7 @@ class ReportController extends Controller
         $newReport->user_id = auth()->user()->id;
         $newReport->save();
 
-        return redirect()->back()->with("message-success", "Laporan Anda telah berhasil diajukan!");
+        return redirect()->back()->with("message-success", "Selamat, laporan Anda telah berhasil diajukan!");
     }
 
     public function detail(Request $request, Report $report)

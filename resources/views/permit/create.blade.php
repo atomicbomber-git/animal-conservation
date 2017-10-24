@@ -76,6 +76,16 @@
             </div>
 
             <div class="form-group">
+                <label class="col-form-label"> Generasi (F): </label>
+                <input value="{{ old("father_generation") }}" type="number" min="0" name="father_generation" class="form-control {{ $errors->has("father_generation") ? "is-invalid" : "" }}" />
+                @if ($errors->has("father_generation"))
+                <div class="invalid-feedback">
+                    {{ $errors->first("father_generation") }}
+                </div>
+                @endif
+            </div>
+
+            <div class="form-group">
                 <label class="col-form-label"> Sertifikat Satwa: </label>
                 <input type="file" name="father_certificate_image" class="form-control-file {{ $errors->has("father_certificate_image") ? "is-invalid" : "" }}" />
                 @if ($errors->has('father_certificate_image'))
@@ -132,6 +142,16 @@
                         @endif
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label"> Generasi (F): </label>
+                <input value="{{ old("mother_generation") }}" type="number" min="0" name="mother_generation" class="form-control {{ $errors->has("mother_generation") ? "is-invalid" : "" }}" />
+                @if ($errors->has("mother_generation"))
+                <div class="invalid-feedback">
+                    {{ $errors->first("mother_generation") }}
+                </div>
+                @endif
             </div>
 
             <div class="form-group">

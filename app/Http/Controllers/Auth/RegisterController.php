@@ -74,4 +74,10 @@ class RegisterController extends Controller
             'scanned_identity_card' => $filename
         ]);
     }
+
+    protected function registered($request, $user)
+    {
+        return redirect($this->redirectPath())
+            ->with("message-success", "Selamat, akun Anda telah berhasil didafttarkan!");
+    }
 }
