@@ -29,11 +29,16 @@ class AuthServiceProvider extends ServiceProvider
             return $user->is_administrator;
         });
 
-        Gate::define("view-invoice", function ($user, $post) {
-            return $user->is_administrator;
+        Gate::define("submit-report", function ($user) {
+            return $user->is_verified;
         });
 
+        Gate::define("submit-permit-proposal", function ($user) {
+            return $user->is_verified;
+        });
 
-
+        Gate::define("update-account-settings", function ($user) {
+            return $user->is_verified;
+        });
     }
 }

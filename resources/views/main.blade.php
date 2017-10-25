@@ -5,13 +5,13 @@
 @section("body")
     @include('shared.navbar', ["page" => "Beranda", "page_category" => "home"])
 
-    @if (session("message-success"))
-    <div class="alert alert-success">
-        {{ session("message-success") }}
-    </div>
-    @endif
-    
     <div class="container-fluid">
+        @if (session("message-success"))
+        <div class="alert alert-success">
+            {{ session("message-success") }}
+        </div>
+        @endif
+        
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <p class="lead">

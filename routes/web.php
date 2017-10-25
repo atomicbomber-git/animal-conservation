@@ -17,9 +17,11 @@ Route::get("/", "MainController@index")->name("main");
 
 Route::middleware(["auth"])->group(function() {
     Route::prefix("report")->group(function() {
-        Route::get("/create", "ReportController@create")->name("report.create");
-        Route::post("/save", "ReportController@save")->name("report.save");
-
+        Route::middleware(["can:submit-permit-proposal"])->group(function() {
+            Route::get("/create", "ReportController@create")->name("report.create");
+            Route::post("/save", "ReportController@save")->name("report.save");
+        });
+        
         Route::middleware(["can:administrate"])->group(function() {
             Route::get("/", "ReportController@index")->name("report.index");
             Route::get("/image/{report}", "ReportController@image")->name("report.image");
@@ -28,8 +30,11 @@ Route::middleware(["auth"])->group(function() {
     });
 
     Route::prefix("permit")->group(function() {
-        Route::get("/create", "PermitController@create")->name("permit.create");
-        Route::post("/save", "PermitController@save")->name("permit.save");
+        
+        Route::middleware(["can:submit-permit-proposal"])->group(function() {
+            Route::get("/create", "PermitController@create")->name("permit.create");
+            Route::post("/save", "PermitController@save")->name("permit.save");
+        });
 
         Route::middleware(["can:administrate"])->group(function() {
             Route::get("/", "PermitController@index")->name("permit.index");
@@ -42,15 +47,23 @@ Route::middleware(["auth"])->group(function() {
         });
     });
 
+    Route::prefix("user")->group(function() {
+        Route::middleware(["can:update-account-settings"])->group(function() {
+            Route::get("/{user}/edit", "UserController@edit")->name("user.edit");
+            Route::post("/{user}", "UserController@update")->name("user.update");
+            Route::post("/{user}/updatePassword", "UserController@updatePassword")->name("user.updatePassword");
+        });
+
+        Route::middleware(["can:administrate"])->group(function() {
+            Route::get("/", "UserController@index")->name("user.index");
+            Route::get("/{user}/identity_card", "UserController@identityCard")->name("user.identity_card");
+            Route::get("/{user}/verify", "UserController@verify")->name("user.verify");
+        });
+    });
 });
 
 Route::middleware(["auth", "can:administrate"])->prefix("administrator")->group(function() {
     Route::get("/dashboard", "AdministratorController@dashboard")->name("admin.dashboard");
-    Route::prefix("user")->group(function() {
-        Route::get("/", "UserController@index")->name("user.index");
-        Route::get("/{user}/identity_card", "UserController@identityCard")->name("user.identity_card");
-        Route::get("/{user}/verify", "UserController@verify")->name("user.verify");
-    });
 });
 
 Route::get("/unauthorized", function() {

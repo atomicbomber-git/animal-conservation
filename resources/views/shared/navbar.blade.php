@@ -6,19 +6,30 @@
     <a class="nav-link" href="{{ route('main') }}"> <i class="fa fa-home" aria-hidden="true"> </i> Beranda </a>
   </li>
 
-  <li class="nav-item">
-    <a class="nav-link {{ isset($page_category) && ($page_category === "permit") ? "active" : "" }}" href="{{ route('permit.create') }}"> <i class="fa fa-book" aria-hidden="true"> </i> Perizinan </a>
-  </li>
+  @can("submit-permit-proposal")
+    <li class="nav-item">
+      <a class="nav-link {{ isset($page_category) && ($page_category === "permit") ? "active" : "" }}" href="{{ route('permit.create') }}"> <i class="fa fa-book" aria-hidden="true"> </i> Perizinan </a>
+    </li>
+  @endcan
 
-  @if(Auth::check())
-  <li class="nav-item">
-    <a class="nav-link {{ isset($page_category) && $page_category === "report" ? "active" : "" }}" href="{{ route('report.create') }}"> <i class="fa fa-file-text" aria-hidden="true"> </i> Laporkan </a>
-  </li>
-  @endif
+  @can("submit-report")
+    <li class="nav-item">
+      <a class="nav-link {{ isset($page_category) && $page_category === "report" ? "active" : "" }}" href="{{ route('report.create') }}"> <i class="fa fa-file-text" aria-hidden="true"> </i> Laporkan </a>
+    </li>
+  @endcan
 
   <li class="nav-item">
     <a class="nav-link" href="#"> <i class="fa fa-info" aria-hidden="true"> </i> Informasi </a>
   </li>
+
+  @can("update-account-settings")
+  <li class="nav-item">
+    <a href="{{ route('user.edit', auth()->user()) }}" class="nav-link {{ isset($page_category) && $page_category === "user" ? "active" : "" }}">
+      <i class="fa fa-user"></i>
+      Akun
+    </a>
+  </li>
+  @endcan
 </ul>
 
 <form class="form-inline my-2 my-lg-0" method="{{ Auth::check() ? "POST": "GET" }}" action="{{ Auth::check() ? route('logout') : route('login') }}">
