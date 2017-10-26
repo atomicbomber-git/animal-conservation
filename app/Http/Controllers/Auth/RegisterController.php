@@ -64,7 +64,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $filename = $data["scanned_identity_card"]->store("images");
+        $filename = $data["scanned_identity_card"]->store("scanned_identity_cards");
 
         return User::create([
             'name' => $data['name'],

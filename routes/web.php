@@ -66,8 +66,8 @@ Route::middleware(["auth"])->group(function() {
             Route::get("/", "LawController@index")->name("law.index");
             Route::get("/create", "LawController@create")->name("law.create");
             Route::post("/save", "LawController@save")->name("law.save");
+            Route::post("/{law}/delete", "LawController@delete")->name("law.delete");
         });
-        Route::get("/{law}/download", "LawController@download")->name("law.download");
     });
 
     Route::middleware(["can:administrate"])->prefix("administrator")->group(function() {
@@ -83,6 +83,8 @@ Route::middleware(["auth"])->group(function() {
         Route::get("/test", "MapController@test");
     });
 });
+
+Route::get("/law/document/{law}", "LawController@download")->name("law.download");
 
 Route::get("/unauthorized", function() {
     return view("error.unauthorized");
