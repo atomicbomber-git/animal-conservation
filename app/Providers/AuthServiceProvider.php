@@ -40,5 +40,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define("update-account-settings", function ($user) {
             return $user->is_verified;
         });
+
     }
 }

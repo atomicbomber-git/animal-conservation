@@ -60,16 +60,31 @@ Route::middleware(["auth"])->group(function() {
             Route::get("/{user}/verify", "UserController@verify")->name("user.verify");
         });
     });
-});
 
-Route::middleware(["auth", "can:administrate"])->prefix("administrator")->group(function() {
-    Route::get("/dashboard", "AdministratorController@dashboard")->name("admin.dashboard");
+    Route::prefix("laws")->group(function() {
+        Route::middleware("can:administrate")->group(function() {
+            Route::get("/", "LawController@index")->name("law.index");
+            Route::get("/create", "LawController@create")->name("law.create");
+            Route::post("/save", "LawController@save")->name("law.save");
+        });
+        Route::get("/{law}/download", "LawController@download")->name("law.download");
+    });
+
+    Route::middleware(["can:administrate"])->prefix("administrator")->group(function() {
+        Route::get("/dashboard", "AdministratorController@dashboard")->name("admin.dashboard");
+
+        Route::prefix("map")->group(function() {
+            Route::get("/", "MapController@admin")->name("map.admin");
+            Route::get("/{location}/detail", "MapController@detail")->name("map.location.detail");
+            Route::post("/addLocation", "MapController@addLocation")->name("map.addLocation");
+            Route::get("/positions", "MapController@positions")->name("map.positions");
+        });
+
+        Route::get("/test", "MapController@test");
+    });
 });
 
 Route::get("/unauthorized", function() {
     return view("error.unauthorized");
 })->name("error.unauthorized");
-
-
-Route::get("/test", function() { return "Dummy...."; })->middleware("auth");
 

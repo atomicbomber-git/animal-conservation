@@ -37,6 +37,8 @@
 
         </style>
 
+        @yield("extra-style")
+
     </head>
 
     <body>
