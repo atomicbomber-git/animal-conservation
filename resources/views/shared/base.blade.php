@@ -38,6 +38,7 @@
         </style>
 
         @yield("extra-style")
+        @yield("extra-head")
 
     </head>
 

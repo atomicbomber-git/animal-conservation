@@ -33,7 +33,9 @@ class UserController extends Controller
         Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'email' => ['required', 'string', 'email' , 'max:255', Rule::unique('users')->ignore($user->id)]
+            'email' => ['required', 'string', 'email' , 'max:255', Rule::unique('users')->ignore($user->id)],
+            'identity_code' => ['required', 'string', Rule::unique('users')->ignore($user->id)],
+            'phone' => 'required|string'
         ])->validate();
 
         $user->update($request->all());

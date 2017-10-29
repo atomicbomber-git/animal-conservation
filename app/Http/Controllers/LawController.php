@@ -14,11 +14,6 @@ class LawController extends Controller
         return view("law.index", ["laws" => Law::all()]);
     }
 
-    public function create()
-    {
-
-    }
-
     public function save(Request $request)
     {
         $data = $request->all();

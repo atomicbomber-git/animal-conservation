@@ -49,6 +49,28 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label"> Nomor Induk Kependudukan (NIK): </label>
+                        <input value="{{ old('identity_code') }}" type="text" name="identity_code" class="form-control {{ $errors->has('identity_code') ? 'is-invalid' : '' }}">
+
+                        @if ($errors->has('identity_code'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('identity_code') }}
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label"> Nomor Telepon: </label>
+                        <input value="{{ old('phone') }}" type="phone" name="phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}">
+
+                        @if ($errors->has('phone'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('phone') }}
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label"> Kata Sandi: </label>
                         <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}">
 

@@ -61,7 +61,7 @@ Route::middleware(["auth"])->group(function() {
         });
     });
 
-    Route::prefix("laws")->group(function() {
+    Route::prefix("law")->group(function() {
         Route::middleware("can:administrate")->group(function() {
             Route::get("/", "LawController@index")->name("law.index");
             Route::get("/create", "LawController@create")->name("law.create");
@@ -70,23 +70,44 @@ Route::middleware(["auth"])->group(function() {
         });
     });
 
+    Route::prefix("information")->group(function() {
+        Route::middleware("can:administrate")->group(function() {
+            Route::get("/", "InformationController@index")->name("information.index");
+            Route::get("/create", "InformationController@create")->name("information.create");
+            Route::post("/save", "InformationController@save")->name("information.save");
+            Route::post("/{information}/delete", "InformationController@delete")->name("information.delete");
+            Route::get("/{information}/edit", "InformationController@edit")->name("information.edit");
+            Route::post("/{information}/update", "InformationController@update")->name("information.update");
+        });
+    });
+
     Route::middleware(["can:administrate"])->prefix("administrator")->group(function() {
         Route::get("/dashboard", "AdministratorController@dashboard")->name("admin.dashboard");
 
         Route::prefix("map")->group(function() {
-            Route::get("/", "MapController@admin")->name("map.admin");
-            Route::get("/{location}/detail", "MapController@detail")->name("map.location.detail");
-            Route::post("/addLocation", "MapController@addLocation")->name("map.addLocation");
-            Route::get("/positions", "MapController@positions")->name("map.positions");
+            Route::get("/manage", "MapController@admin")->name("map.admin");
+            Route::post("/location/create", "MapController@addLocation")->name("map.addLocation");
+            Route::get("/location/{location}/edit", "MapController@editLocation")->name("map.location.edit");
+            Route::post("/location/{location}/update", "MapController@updateLocation")->name("map.location.update");
+            Route::post("/location/{location}/delete", "MapController@deleteLocation")->name("map.location.delete");
         });
-
-        Route::get("/test", "MapController@test");
     });
 });
 
 Route::get("/law/document/{law}", "LawController@download")->name("law.download");
+Route::get("/information/{information}/image", "InformationController@image")->name("information.image");
+Route::get("/information/{information}/thumbnail", "InformationController@thumbnail")->name("information.thumbnail");
+Route::get("/information/{information}/detail", "InformationController@detail")->name("information.detail");
+Route::get("/articles", "InformationController@all")->name("information.all");
+
+Route::get("/map/location/{location}", "MapController@detail")->name("map.location.detail");
+Route::get("/map/locations", "MapController@locations")->name("map.locations");
+Route::get("/map/location/{location}/image", "MapController@locationImage")->name("map.location.image");
+Route::get("/map", "MapController@index")->name("map.index");
+
+
+Route::redirect("/administrator", "/administrator/dashboard", 301);
 
 Route::get("/unauthorized", function() {
     return view("error.unauthorized");
 })->name("error.unauthorized");
-

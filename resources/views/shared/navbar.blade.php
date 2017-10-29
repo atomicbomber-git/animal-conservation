@@ -19,7 +19,7 @@
   @endcan
 
   <li class="nav-item">
-    <a class="nav-link" href="#"> <i class="fa fa-info" aria-hidden="true"> </i> Informasi </a>
+    <a class="nav-link" href="{{ route('information.all') }}"> <i class="fa fa-info" aria-hidden="true"> </i> Artikel </a>
   </li>
 
   @can("update-account-settings")
@@ -30,6 +30,13 @@
     </a>
   </li>
   @endcan
+
+  <li class="nav-item">
+    <a href="{{ route('map.index') }}" class="nav-link {{ isset($page_category) && $page_category === "map" ? "active" : "" }}">
+      <i class="fa fa-map"></i>
+      Peta
+    </a>
+  </li>
 </ul>
 
 <form class="form-inline my-2 my-lg-0" method="{{ Auth::check() ? "POST": "GET" }}" action="{{ Auth::check() ? route('logout') : route('login') }}">

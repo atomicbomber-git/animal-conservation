@@ -13,6 +13,8 @@
                 <th scope="col"> Nama Pengguna </th>
                 <th scope="col"> Nama Asli </th>
                 <th scope="col"> E-Mail </th>
+                <th scope="col"> NIK </th>
+                <th scope="col"> No. Telp </th>
                 <th scope="col"> Scan KTP </th>
                 <th scope="col"> Status Verifikasi </th>
                 <th scope="col"> Kendali </th>
@@ -25,6 +27,8 @@
                     <td> {{ $user->username }}</td>
                     <td> {{ $user->name }}</td>
                     <td> {{ $user->email }}</td>
+                    <td> {{ $user->identity_code }}</td>
+                    <td> {{ $user->phone }}</td>
                     <td class="text-center">
                         <button class="btn btn-sm btn-primary btn-view-identity" data-image="{{ route('user.identity_card', $user) }}">
                             <i class="fa fa-eye"></i>
@@ -64,6 +68,8 @@
                 <th scope="col"> Nama Pengguna </th>
                 <th scope="col"> Nama Asli </th>
                 <th scope="col"> E-Mail </th>
+                <th scope="col"> NIK </th>
+                <th scope="col"> No. Telp </th>
                 <th scope="col"> Scan KTP </th>
                 <th scope="col"> Status Verifikasi </th>
                 <th scope="col"> Kendali </th>
@@ -76,6 +82,8 @@
                     <td> {{ $user->username }}</td>
                     <td> {{ $user->name }}</td>
                     <td> {{ $user->email }}</td>
+                    <td> {{ $user->identity_code }}</td>
+                    <td> {{ $user->phone }}</td>
                     <td class="text-center">
                         <button class="btn btn-sm btn-primary btn-view-identity" data-image="{{ route('user.identity_card', $user) }}">
                             <i class="fa fa-eye"></i>
@@ -109,7 +117,7 @@
                     <img id="imagePreview" src="{{ route('user.identity_card', $user) }}" class="img-fluid" alt="Responsive image">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Tutup </button>
                 </div>
             </div>
         </div>
