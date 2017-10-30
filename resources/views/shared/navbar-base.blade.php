@@ -14,6 +14,6 @@
     </div>
 </nav>
 
-<div style="height: 150px">
+<div style="height: 120px">
     
 </div>
