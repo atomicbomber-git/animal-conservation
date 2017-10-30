@@ -113,7 +113,7 @@
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('img/tiger-003.jpg') }}" alt="Third slide">
-                            <div class="carousel-caption bg-dark">
+                            <div class="carousel-caption">
                                 <h3> Macan </h3>
                                 <p> Harimau </p>
                             </div>

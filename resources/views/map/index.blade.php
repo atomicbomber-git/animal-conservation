@@ -19,22 +19,12 @@
                                 {{ $location->name }}
                             </div>
                             <div class="col text-right">
-                                <a href="{{ route("map.location.edit", $location) }}" class="btn btn-dark btn-sm">
-                                    <i class="fa fa-pencil"> </i>
-                                </a>
                                 <button class="btn btn-dark btn-sm btn-pointer" data-lat="{{ $location->latitude }}" data-lng="{{ $location->longitude
                                  }}">
                                     <i class="fa fa-map-marker"> </i>
                                 </button>
-                                <form style="display: inline" action="{{ route("map.location.delete", $location) }}" method="POST">
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                    {{ csrf_field() }}
-                                </form>
                             </div>
-                        </div>  
-                        
+                        </div>
                     </div>
                     @endforeach
                 </div>

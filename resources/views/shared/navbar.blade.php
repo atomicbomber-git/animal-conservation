@@ -19,7 +19,7 @@
   @endcan
 
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('information.all') }}"> <i class="fa fa-info" aria-hidden="true"> </i> Artikel </a>
+    <a class="nav-link {{ isset($page_category) && $page_category === "article" ? "active" : "" }}" href="{{ route('information.all') }}"> <i class="fa fa-info" aria-hidden="true"> </i> Artikel </a>
   </li>
 
   @can("update-account-settings")

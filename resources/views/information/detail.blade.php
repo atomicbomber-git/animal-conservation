@@ -3,7 +3,7 @@
 @section("title", $article->title)
 
 @section("body")
-    @include("shared.navbar", ["page_category" => "information"])
+    @include("shared.navbar", ["page_category" => "article"])
     <div class="container-fluid container-medium">
         <h1>
             {{ $article->title }}
