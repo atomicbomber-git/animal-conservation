@@ -3,7 +3,7 @@
 @section("title", "Pengguna")
 
 @section("main-content")
-    <h1> Daftar Pengajuan Izin Penangkaran Hewan </h1>
+    <h1> Daftar Pengajuan Izin Penangkaran Tumbuhan </h1>
     <hr>
 
     <table class="table table-striped table-sm">
@@ -28,21 +28,17 @@
                 </td>
                 <td> {{ $permit->species }} </td>
                 <td>
-                    <button class="btn btn-sm btn-info btn-view-parent" data-url="{{ route("permit.father", $permit) }}">
-                        <i class="fa fa-mars"></i>
-                        Jantan
-                    </button> 
-                    <button class="btn btn-sm btn-info btn-view-parent" data-url="{{ route("permit.mother", $permit) }}">
-                        <i class="fa fa-venus"></i>
-                        Betina
+                    <button class="btn btn-sm btn-info btn-view-parent" data-url="{{ route('plant_permit.parent', $permit) }}">
+                        <i class="fa fa-list"></i>
+                        Detail
                     </button> 
                 </td>
                 <td>
-                    <a href="{{ route('permit.proposal', $permit) }}" class="btn btn-dark btn-sm">
+                    <a href="{{ route('plant_permit.proposal', $permit) }}" class="btn btn-dark btn-sm">
                         <i class="fa fa-file-pdf-o"></i>
                         Proposal
                     </a>
-                    <button class="btn btn-dark btn-sm btn-view-reference" data-url="{{ route('permit.reference', $permit) }}">
+                    <button class="btn btn-dark btn-sm btn-view-reference" data-url="{{ route('plant_permit.reference', $permit) }}">
                         <i class="fa fa-eye"></i>
                         SK Kecamatan
                     </button>
@@ -122,6 +118,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section("extra-script")

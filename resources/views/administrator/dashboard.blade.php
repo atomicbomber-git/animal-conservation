@@ -54,12 +54,29 @@
             <div class="card">
                 <div class="card-header">
                     <i class="fa fa-book"></i>
-                    Perizinan
+                    Proposal Perizinan Penangkaran Hewan
                 </div>
                 <div class="card-body">
-                    Terdapat {{ $permitRequestCount }} permintaan perizinan yang telah masuk.
+                    Terdapat {{ $permitRequestCount }} proposal perizinan penangkaran hewan yang telah masuk.
                     <div style="text-align: right;">
                         <a href="{{ route('permit.index') }}" class="btn btn-primary btn-sm">
+                            <i class="fa fa-cog"></i>
+                            Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-book"></i>
+                    Proposal Perizinan Penangkaran Tumbuhan
+                </div>
+                <div class="card-body">
+                    Terdapat {{ $plantPermitRequestCount }} proposal perizinan penangkaran tumbuhan yang telah masuk.
+                    <div style="text-align: right;">
+                        <a href="{{ route('plant_permit.index') }}" class="btn btn-primary btn-sm">
                             <i class="fa fa-cog"></i>
                             Detail
                         </a>

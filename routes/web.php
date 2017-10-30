@@ -58,6 +58,7 @@ Route::middleware(["auth"])->group(function() {
             Route::get("/", "UserController@index")->name("user.index");
             Route::get("/{user}/identity_card", "UserController@identityCard")->name("user.identity_card");
             Route::get("/{user}/verify", "UserController@verify")->name("user.verify");
+            Route::get("/{user}", "UserController@detail")->name("user.detail");
         });
     });
 
@@ -78,6 +79,19 @@ Route::middleware(["auth"])->group(function() {
             Route::post("/{information}/delete", "InformationController@delete")->name("information.delete");
             Route::get("/{information}/edit", "InformationController@edit")->name("information.edit");
             Route::post("/{information}/update", "InformationController@update")->name("information.update");
+        });
+    });
+
+    Route::prefix("plant_permit")->group(function() {
+        Route::get("/create", "PlantPermitController@create")->name("plant_permit.create");
+        Route::post("/save", "PlantPermitController@save")->name("plant_permit.save");
+
+        Route::middleware("can:administrate")->group(function() {
+            Route::get("/", "PlantPermitController@index")->name("plant_permit.index");
+            Route::get("/{permit}/proposal", "PlantPermitController@proposal")->name("plant_permit.proposal");
+            Route::get("/{permit}/reference", "PlantPermitController@reference")->name("plant_permit.reference");
+            Route::get("/{permit}/parent", "PlantPermitController@parent")->name("plant_permit.parent");
+            Route::get("/{permit}/certificate-image", "PlantPermitController@certificateImage")->name("plant_permit.parent-cert-image");
         });
     });
 

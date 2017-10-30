@@ -38,7 +38,13 @@
                     <a href="{{ route('permit.index') }}" class="list-group-item list-group-item-action">
                         <div class="row">
                             <div class="col-3 menu-item"> <i class="fa fa-book"></i> </div>
-                            <div class="col-9"> Perizinan </div>
+                            <div class="col-9"> Perizinan Hewan </div>
+                        </div>
+                    </a>
+                    <a href="{{ route('plant_permit.index') }}" class="list-group-item list-group-item-action">
+                        <div class="row">
+                            <div class="col-3 menu-item"> <i class="fa fa-book"></i> </div>
+                            <div class="col-9"> Perizinan Tumbuhan </div>
                         </div>
                     </a>
                     <a href="{{ route('law.index') }}" class="list-group-item list-group-item-action">

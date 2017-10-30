@@ -15,7 +15,7 @@
         <h1> Laporan </h1>
         <hr/>
         <div class="alert alert-info">
-            Laporkan hal di sekitar Anda mengenai perburuan liar, penangkapan, penjualan dan juga konflik antara manusia dan satwa dengan mengisi formulir dibawah ini.
+            Laporkan hal di sekitar Anda mengenai perburuan liar, penangkapan, penjualan dan juga konflik antara manusia dan satwa ke BKSDA dengan mengisi formulir dibawah ini.
         </div>
         <form method="POST" enctype="multipart/form-data" action="{{ route('report.save') }}">
             <div class="form-group">

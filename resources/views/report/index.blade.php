@@ -22,7 +22,12 @@
                 <tr>
                     <td> {{ $loop->iteration }}. </td>
                     <td> {{ $report->title }} </td>
-                    <td> {{ $report->user->name }} </td>
+                    <td>
+                        {{ $report->user->name }}
+                        <button class="btn btn-sm btn-info btn-userDetail" data-url="{{ route("user.detail", $report->user) }}">
+                            <i class="fa fa-list"></i>
+                        </button>
+                    </td>
                     <td> {{ $report->formattedDate() }} </td>
                     <td> {{ $report->location }}  </td>
                     <td>
@@ -55,6 +60,28 @@
         </div>
     </div>
 
+    <div class="modal fade" id="userDetailModal" tabindex="-1" role="dialog" aria-labelledby="previewReferenceModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="user-modal-header"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <dt> Nama Pengguna </dt> <dd id="username"></dd>
+                        <dt> Nama Asli </dt> <dd id="name"></dd>
+                        <dt> NIK </dt> <dd id="identity_code"></dd>
+                        <dt> E-Mail </dt> <dd id="email"></dd>
+                        <dt> No. Telepon</dt> <dd id="phone"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div style="height: 800px"></div>
 @endsection
 
@@ -72,6 +99,21 @@
                     $("#detailModal").modal("toggle");
                 });
 
+            });
+        });
+
+        $(".btn-userDetail").each(function() {
+            var userDetailUrl = $(this).data("url");
+            $(this).click(function() {
+                $.getJSON(userDetailUrl, function (data) {
+                    $("#user-modal-header").html(data.name);
+                    $("#username").html(data.username);
+                    $("#name").html(data.name);
+                    $("#identity_code").html(data.identity_code);
+                    $("#email").html(data.email);
+                    $("#phone").html(data.phone);
+                    $("#userDetailModal").modal("show");
+                });
             });
         });
     });

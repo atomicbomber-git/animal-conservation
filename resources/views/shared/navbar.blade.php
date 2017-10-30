@@ -7,14 +7,21 @@
   </li>
 
   @can("submit-permit-proposal")
-    <li class="nav-item">
-      <a class="nav-link {{ isset($page_category) && ($page_category === "permit") ? "active" : "" }}" href="{{ route('permit.create') }}"> <i class="fa fa-book" aria-hidden="true"> </i> Perizinan </a>
-    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link {{ isset($page_category) && ($page_category === "permit") ? "active" : "" }} dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="fa fa-book" aria-hidden="true"></i>
+          Perizinan
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ route("permit.create") }}"> Hewan </a>
+          <a class="dropdown-item" href="{{ route("plant_permit.create") }}"> Tumbuhan </a>
+        </div>
+      </li>
   @endcan
 
   @can("submit-report")
     <li class="nav-item">
-      <a class="nav-link {{ isset($page_category) && $page_category === "report" ? "active" : "" }}" href="{{ route('report.create') }}"> <i class="fa fa-file-text" aria-hidden="true"> </i> Laporkan </a>
+      <a class="nav-link {{ isset($page_category) && $page_category === "report" ? "active" : "" }}" href="{{ route('report.create') }}"> <i class="fa fa-file-text" aria-hidden="true"> </i> Laporan </a>
     </li>
   @endcan
 

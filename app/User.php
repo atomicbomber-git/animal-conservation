@@ -34,7 +34,10 @@ class User extends Authenticatable
         return $this->hasMany("App\Report");
     }
 
-    // public function permits()
+    public function plantPermits()
+    {
+        return $this->hasMany("App\PlantPermit");
+    }
 
     public function isVerified()
     {

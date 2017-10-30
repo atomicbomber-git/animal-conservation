@@ -1,6 +1,6 @@
 @extends("shared.base")
 
-@section("title", "Perizinan")
+@section("title", "Perizinan Hewan")
 
 @section("body")
     @include("shared.navbar")
@@ -14,11 +14,15 @@
         @endif
 
         <form method="POST" enctype="multipart/form-data" action="{{ route('permit.save') }}">
-            <h1> Pengajuan Izin Penangkaran </h1>
+            <h1> Pengajuan Izin Penangkaran Hewan </h1>
             <hr/>
 
+            <div class="alert alert-info">
+                Disini Anda dapat mengajukan proposal ke BKSDA untuk melakukan penangkaran terhadap hewan yang bertstatus dilindungi.
+            </div>
+
             <div class="form-group">
-                <label class="col-form-label"> Jenis / Spesies Satwa: </label>
+                <label class="col-form-label"> Jenis / Spesies Hewan: </label>
                 <input value="{{ old("species") }}" type="text" name="species" class="form-control {{ $errors->has("species") ? "is-invalid" : "" }}" />
                 @if ($errors->has("species"))
                 <div class="invalid-feedback">
@@ -33,7 +37,7 @@
             <hr/>
 
             <div class="form-group">
-                <label class="col-form-label"> Nama Satwa: </label>
+                <label class="col-form-label"> Nama Indukan Jantan: </label>
                 <input value="{{ old("father_name") }}" type="text" name="father_name" class="form-control {{ $errors->has("father_name") ? "is-invalid" : "" }}" />
                 @if ($errors->has("father_name"))
                 <div class="invalid-feedback">
@@ -86,7 +90,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-form-label"> Sertifikat Satwa: </label>
+                <label class="col-form-label"> Sertifikat Indukan Jantan: </label>
                 <input type="file" name="father_certificate_image" class="form-control-file {{ $errors->has("father_certificate_image") ? "is-invalid" : "" }}" />
                 @if ($errors->has('father_certificate_image'))
                 <p class="text-danger form-text">
@@ -102,7 +106,7 @@
             <hr/>
 
             <div class="form-group">
-                <label class="col-form-label"> Nama Satwa: </label>
+                <label class="col-form-label"> Nama Indukan Betina: </label>
                 <input type="text" name="mother_name" value="{{ old("mother_name") }}" class="form-control {{ $errors->has("mother_name") ? "is-invalid" : "" }}" />
                 @if ($errors->has("mother_name"))
                 <div class="invalid-feedback">
@@ -155,7 +159,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-form-label"> Sertifikat Satwa: </label>
+                <label class="col-form-label"> Sertifikat Indukan Jantan: </label>
                 <input type="file" name="mother_certificate_image" class="form-control-file {{ $errors->has("mother_certificate_image") ? "is-invalid" : "" }}" />
                 @if ($errors->has('mother_certificate_image'))
                 <p class="text-danger form-text">

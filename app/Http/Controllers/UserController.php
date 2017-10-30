@@ -20,6 +20,27 @@ class UserController extends Controller
         return view("user.index", ["users" => $users, "verified_users" => $verified_users]);
     }
 
+    public function detail(User $user)
+    {
+        if ( request()->ajax() ) {
+            return [
+                "name" => $user->name,
+                "username" => $user->username,
+                "identity_code" => $user->identity_code,
+                "email" => $user->email,
+                "phone" => $user->phone
+            ];
+        }
+
+        return [
+            "name" => $user->name,
+            "username" => $user->username,
+            "identity_code" => $user->identity_code,
+            "email" => $user->email,
+            "phone" => $user->phone
+        ];
+    }
+
     public function edit(Request $request, User $user)
     {
         if ($user->is_administrator)
