@@ -14,7 +14,7 @@ class Permit extends Model
 
     public function formattedMotherBirthDate()
     {
-        return $date-> mother_birthdate->format('j F Y');
+        return $this->mother_birthdate->format('j F Y');
     }
 
     public function formattedFatherBirthDate()
