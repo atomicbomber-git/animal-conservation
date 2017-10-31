@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-
+        <title> Laporan Proposal Izin Hewan </title>
         <style>
 
             dl {
