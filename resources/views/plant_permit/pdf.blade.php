@@ -62,6 +62,7 @@
                 <tr> <td> Tempat Penangkaran: </td> <td> {{ $permit->parent_birthplace }} </td> </tr>
                 <tr> <td> Tanggal Pekrembangbiakan </td> <td> {{ $permit->formattedParentBirthDate() }} </td> </tr>
                 <tr> <td> Generasi: </td> <td> F{{ $permit->parent_generation }} </td> </tr>
+                <tr> <td> No. Sertifikat: </td> <td> F{{ $permit->parent_certificate_code }} </td> </tr>
 
 
             </tbody>
