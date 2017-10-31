@@ -14,14 +14,20 @@ class Permit extends Model
 
     public function formattedMotherBirthDate()
     {
-        $date = new Date($this->mother_birthdate);
-        return $date->format('j F Y');
+        return $date-> mother_birthdate->format('j F Y');
     }
 
     public function formattedFatherBirthDate()
     {
-        $date = new Date($this->father_birthdate);
-        return $date->format('j F Y');
+        return $this->father_birthdate->format('j F Y');
+    }
+
+    public function getFatherBirthdateAttribute($birthdate) {
+        return new Date($birthdate);
+    }
+
+    public function getMotherBirthdateAttribute($birthdate) {
+        return new Date($birthdate);
     }
 
     protected $fillable = [

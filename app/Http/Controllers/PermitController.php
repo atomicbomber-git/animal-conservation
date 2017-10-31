@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Permit;
+use Jenssegers\Date\Date;
 
 class PermitController extends Controller
 {
@@ -93,5 +94,12 @@ class PermitController extends Controller
         Permit::create($data);
 
         return redirect()->back()->with("message-success", "Selamat, proposal izin penangkaran Anda telah berhasil diajukan!");
+    }
+
+    public function pdf(Permit $permit)
+    {
+        $date = new Date();
+        $pdfDocument = \PDF::loadView("permit.pdf", ["permit" => $permit, "date" => $date]);
+        return $pdfDocument->stream();
     }
 }

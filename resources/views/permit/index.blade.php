@@ -10,7 +10,7 @@
         <thead class="thead thead-light">
             <tr>
                 <th scope="col"> # </th>
-                <th scope="col"> Pengaju </th>
+                <th scope="col"> Pemohon </th>
                 <th scope="col"> Spesies </th>
                 <th scope="col"> Indukan </th>
                 <th scope="col"> Berkas </th>
@@ -46,6 +46,11 @@
                         <i class="fa fa-eye"></i>
                         SK Kecamatan
                     </button>
+                    <a href="{{ route('permit.pdf', $permit) }}" class="btn btn-dark btn-sm">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Laporan
+                    </a>
+
                 </td>
             </tr>
             @endforeach

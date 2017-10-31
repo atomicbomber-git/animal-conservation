@@ -42,6 +42,10 @@
                         <i class="fa fa-eye"></i>
                         SK Kecamatan
                     </button>
+                    <a href="{{ route('plant_permit.pdf', $permit) }}" class="btn btn-dark btn-sm">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Proposal
+                    </a>
                 </td>
             </tr>
             @endforeach

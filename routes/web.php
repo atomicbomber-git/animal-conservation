@@ -44,6 +44,7 @@ Route::middleware(["auth"])->group(function() {
             Route::get("/{permit}/father", "PermitController@father")->name("permit.father");
             Route::get("/{permit}/father/certificate-image", "PermitController@fatherCertificateImage")->name("permit.father-cert-image");
             Route::get("/{permit}/reference", "PermitController@reference")->name("permit.reference");
+            Route::get("/{permit}/pdf", "PermitController@pdf")->name("permit.pdf");
         });
     });
 
@@ -92,6 +93,7 @@ Route::middleware(["auth"])->group(function() {
             Route::get("/{permit}/reference", "PlantPermitController@reference")->name("plant_permit.reference");
             Route::get("/{permit}/parent", "PlantPermitController@parent")->name("plant_permit.parent");
             Route::get("/{permit}/certificate-image", "PlantPermitController@certificateImage")->name("plant_permit.parent-cert-image");
+            Route::get("/{permit}/pdf", "PlantPermitController@pdf")->name("plant_permit.pdf");
         });
     });
 
@@ -121,6 +123,7 @@ Route::get("/map", "MapController@index")->name("map.index");
 
 
 Route::redirect("/administrator", "/administrator/dashboard", 301);
+
 
 Route::get("/unauthorized", function() {
     return view("error.unauthorized");

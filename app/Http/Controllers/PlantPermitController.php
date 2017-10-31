@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PlantPermit;
+use Jenssegers\Date\Date;
 use Storage;
 
 class PlantPermitController extends Controller
@@ -70,5 +71,12 @@ class PlantPermitController extends Controller
             "generation" => $permit->parent_generation,
             "certificateImageUrl" => route('plant_permit.parent-cert-image', $permit)
         ]);
+    }
+
+    public function pdf(PlantPermit $permit)
+    {
+        $date = new Date();
+        $pdfDocument = \PDF::loadView("plant_permit.pdf", ["permit" => $permit, "date" => $date]);
+        return $pdfDocument->stream();
     }
 }
